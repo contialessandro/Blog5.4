@@ -15,7 +15,7 @@
             <li><a href="#">Wall</a></li>
             <li><a href="#">Actius</a></li>
             @if(Auth::check())
-                <li><a href="/logout">Logout</a> {{ Auth::user()->user_login }}</li>
+                <li><a href="/logout">Logout</a> {{ Auth::user()->name }}</li>
             @endif
         </ol>
     </div>

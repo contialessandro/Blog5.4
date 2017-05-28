@@ -35,15 +35,16 @@ class CommentsController extends Controller
      */
     public function store(Post $post)
     {
+
         $this->validate(request(),[
             'body' => 'required|min:2'
         ]);
+        $id = auth()->id();
 
-        $post->addComment([
+        $a = $post->addComment([
             'body' =>request('body'),
             'user_id' => auth()->id()
         ]);
-
         return back();
     }
 

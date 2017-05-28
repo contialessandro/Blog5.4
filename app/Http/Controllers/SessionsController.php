@@ -42,9 +42,9 @@ class SessionsController extends Controller
         /*$this->validate($request, [
             'user_email' => 'required', 'password' => 'required',
         ]);*/
-        $credentials = ['user_email' =>request('user_email'), 'password'=> request('password')];
+        $credentials = ['email' =>request('email'), 'password'=> request('password')];
 
-        $auth = auth()->attempt(request(['user_email','password'
+        $auth = auth()->attempt(request(['email','password'
 
             /*
             'user_login' => request('user_login'),
@@ -53,9 +53,9 @@ class SessionsController extends Controller
             'user_email' => request('user_email'),
             'user_nicename' => request('user_login'),
             'user_url' => '/'.request('user_login')*/
-        ]));
+        ], true));
 
-        if (! auth()->attempt(request($request)))
+        if (! auth()->attempt(request(['email', 'password'])))
         {
 
             return back()->withErrors([
@@ -89,7 +89,7 @@ class SessionsController extends Controller
     {
 
         auth()->validate([
-            'user_email' => request('user_email'),
+            'email' => request('email'),
             'password' => request('password')
         ]);
 
@@ -98,12 +98,12 @@ class SessionsController extends Controller
         // the IP address of the client making these requests into this application.
 
         $a = auth()->attempt([
-            'user_email' => request('user_email'),
+            'email' => request('email'),
             'password' => request('password')
         ]);
         dd($a);
         if (auth()->attempt([
-            'user_email' => request('user_email'),
+            'email' => request('email'),
             'password' => request('password')
         ])) {
 

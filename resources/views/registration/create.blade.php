@@ -6,12 +6,12 @@
         <form method="POST" action="/register">
             {{csrf_field()}}
             <div class="form-group">
-                <label for="user_login">Name</label>
-                <input type="text" class="form-control" name="user_login" id="user_login" placeholder="Name" required>
+                <label for="name">Name</label>
+                <input type="text" class="form-control" name="name" id="name" placeholder="Name" required>
             </div>
             <div class="form-group">
-                <label for="user_email">Email</label>
-                <input type="email" class="form-control" name="user_email" id="user_email" placeholder="email" required>
+                <label for="email">Email</label>
+                <input type="email" class="form-control" name="email" id="email" placeholder="email" required>
             </div>
             <div class="form-group">
                 <label for="password">Password</label>

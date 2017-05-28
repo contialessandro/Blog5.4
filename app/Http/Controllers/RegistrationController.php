@@ -36,21 +36,16 @@ class RegistrationController extends Controller
     {
 
         $this->validate(request(),[
-            'user_login' => 'required',
-            'user_email' => 'required|email',
+            'name' => 'required',
+            'email' => 'required|email',
             'password' => 'required|confirmed'
         ]);
 
-        $user = User::create(request(['user_login','user_email','password'
-
-            /*
-            'user_login' => request('user_login'),
-            'password' => request('password'),
-            'user_pass' => request('password'),
-            'user_email' => request('user_email'),
-            'user_nicename' => request('user_login'),
-            'user_url' => '/'.request('user_login')*/
-        ]));
+        $user = $user = User::create([
+            'name' => request('name'),
+            'email' => request('email'),
+            'password' => bcrypt(request('password'))
+        ]);
 
         auth()->login($user);
 
