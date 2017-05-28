@@ -3,7 +3,8 @@
         <a href="/posts/{{$post->id}}">{{$post->title}}</a>
     </h2>
     <p class="blog-post-meta">
-        created by:
+        @if(Auth::check())
+        @endif
         {{$post->created_at->toFormattedDateString()}}
     </p>
 

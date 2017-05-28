@@ -1,9 +1,11 @@
 @extends('layout.layout')
 @section('content')
-    @include('layout.sidebar')
-    <div class="col-sm-8 blog-main">
 
-        <h1>{{$post->title}}</h1>
+    <div class="col-sm-12 blog-main">
+
+        <h1>{{$post->title}}</h1> @if(Auth::check())
+            {{ $post->user->name }} wrote
+        @endif
         <p>{{$post->body}}</p>
     <hr>
         <div class="comments">
@@ -13,8 +15,11 @@
 
                     <li class="list-group-item">
 
-                        <strong>{{ $comment->created_at->diffForHumans() }}: &nbsp;</strong>
-
+                        <strong>{{ $comment->created_at->diffForHumans() }}
+                            @if(Auth::check())
+                                {{ $comment->post->user->name }} wrote: <br>
+                            @endif
+                        </strong>
                         {{ $comment->body}}
 
                     </li>

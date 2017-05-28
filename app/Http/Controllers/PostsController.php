@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\App;
 use App\Post;
 use App\User;
 
+
 class PostsController extends Controller
 {
     public function __construct()

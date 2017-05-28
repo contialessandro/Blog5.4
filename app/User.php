@@ -31,16 +31,17 @@ class User extends Authenticatable
     {
         return $this->hasMany(Post::class);
     }
+
     public function publish(Post $post)
     {
         $this->posts()->save($post);
     }
-
-    /*public function getAuthPassword()
+    /*public function addComment(Comment $comment)
     {
-        $custom_field = 'user_pass';
-        return $this->$custom_field;
+        $this->comments()->save($comment);
+        Comment::create([
+            'body' => request('body'),
+            'post_id' => $this->id
+        ]);
     }*/
-    public $timestamps = false;
-
 }
