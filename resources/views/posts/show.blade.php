@@ -3,10 +3,18 @@
 
     <div class="col-sm-12 blog-main">
 
-        <h1>{{$post->title}}</h1> @if(Auth::check())
+        <h1 class="text-center">{{$post->title}}</h1>
+
+        <div class="text-center">
+            <img class="img-rounded" src="/images/Quote_1.jpg">
+        </div>
+
+        @if(Auth::check())
             {{ $post->user->name }} wrote
         @endif
+
         <p>{{$post->body}}</p>
+
     <hr>
         <div class="comments">
             <ul class="list-group">
